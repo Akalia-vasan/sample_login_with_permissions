@@ -41,3 +41,23 @@ Breadcrumbs::for('admin.auth.role.edit', function ($trail, $id) {
     $trail->parent('admin.auth.role.index');
     $trail->push('Role Edit', route('admin.auth.role.edit', $id));
 });
+
+// Company breadcrumbs
+Breadcrumbs::for('admin.auth.company.index', function ($trail) {
+    $trail->push(__('Company Management'), route('admin.auth.company.index'));
+});
+
+Breadcrumbs::for('admin.auth.company.create', function ($trail) {
+    $trail->parent('admin.auth.company.index');
+    $trail->push('Company Create', route('admin.auth.company.create'));
+});
+
+Breadcrumbs::for('admin.auth.company.edit', function ($trail, $id) {
+    $trail->parent('admin.auth.company.index');
+    $trail->push('Company Edit', route('admin.auth.company.edit', $id));
+});
+
+Breadcrumbs::for('admin.auth.company.show', function ($trail, $id) {
+    $trail->parent('admin.auth.company.index');
+    $trail->push('Company View', route('admin.auth.company.show', $id));
+});

@@ -50,6 +50,9 @@
             <a class="dropdown-item" href="{{ route('logout') }}">
                 <i class="fas fa-lock"></i> Logout
             </a>
+            <a class="dropdown-item" href="{{ route('admin.auth.account.index') }}">
+                <i class="fas fa-user"></i> My Account
+            </a>
           </div>
         </li>
         @endauth

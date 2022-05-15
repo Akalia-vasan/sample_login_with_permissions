@@ -5,6 +5,7 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserTableController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Role\RoleTableController;
+use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -65,5 +66,29 @@ Route::group([
             Route::get('/show', [RoleController::class, 'show'])->name('role.show');
 
         });
+    });
+
+    Route::group(['namespace' => 'Company', 'prefix' => 'company'], function () {
+        // For DataTables
+        Route::post('/get', [CompanyTableController::class, 'invoke'])->name('company.get');
+
+
+        // Company CRUD
+        Route::get('/', [CompanyController::class, 'index'])->name('company.index');
+        Route::get('/create', [CompanyController::class, 'create'])->name('company.create');
+        Route::post('/', [CompanyController::class, 'store'])->name('company.store');
+        Route::group(['prefix' => '{company}'], function () {
+            Route::get('/edit', [CompanyController::class, 'edit'])->name('company.edit');
+            Route::patch('/edit', [CompanyController::class, 'update'])->name('company.update');
+            Route::delete('/delete', [CompanyController::class, 'destory'])->name('company.destroy');
+            Route::get('/show', [CompanyController::class, 'show'])->name('company.show');
+
+        });
+    });
+
+    Route::group(['namespace' => 'Account', 'prefix' => 'account'], function () {
+        Route::get('/', [AccountController::class, 'index'])->name('account.index');
+        Route::patch('/edit', [AccountController::class, 'update'])->name('account.update');
+        Route::patch('/password', [AccountController::class, 'password'])->name('account.password.update');
     });
 });
