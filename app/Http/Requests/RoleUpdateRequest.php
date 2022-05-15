@@ -24,8 +24,7 @@ class RoleUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            'name' => 'required|unique:roles,name',
-            'permissions' => 'required',
+            'name' => 'required|unique:roles,name,'.$this->role->id
         ];
     }
 }

@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Role Management' . ' | ' . 'Role Create')
+@section('title', 'Role Management' . ' | ' . 'Role Update')
 
 @section('breadcrumb-links')
 <li class="breadcrumb-menu">
@@ -9,7 +9,7 @@
             <a class="btn dropdown-toggle" href="#" role="button" id="breadcrumb-dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Role</a>
 
             <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-1">
-            <a class="dropdown-item" href="{{ route('admin.auth.role.create') }}">Create Role</a>
+            <a class="dropdown-item" href="{{ route('admin.auth.role.create') }}">Edit Role</a>
             </div>
         </div><!--dropdown-->
         <!--<a class="btn" href="#">Static Link</a>-->
@@ -19,7 +19,7 @@
 @endsection
 
 @section('content')
-{{ Form::open(['route' => 'admin.auth.role.store', 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'post', 'id' => 'create-role']) }}
+{{ Form::model($role, ['route' => ['admin.auth.role.update', $role], 'class' => 'form-horizontal', 'role' => 'form', 'method' => 'PATCH', 'id' => 'edit-role']) }}
 <div class="card">
     <div class="card-body">
         <div class="row">
@@ -60,7 +60,7 @@
                     {{ Form::label('associated_permissions', 'Associated Permissions', [ 'class'=>'col-md-2 form-control-label']) }}
 
                     <div class="col-md-10 search-permission" style="min-height: unset;">
-                    
+
                         <!-- {{ Form::select('associated_permissions', array('all' => trans('All'), 'custom' => trans('Custom')), 'all', ['class' => 'form-control select2']) }} -->
 
                         <div id="available-permissions" style="margin-top: 20px;">
