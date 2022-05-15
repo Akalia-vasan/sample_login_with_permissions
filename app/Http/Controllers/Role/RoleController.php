@@ -13,13 +13,10 @@ use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
-
-
 class RoleController extends Controller
 {
     
     protected $roleRepository;
-
 
     public function __construct(RoleRepository $roleRepository)
     {
@@ -31,8 +28,6 @@ class RoleController extends Controller
         View::share('js', ['roles']);
     }
 
-
-    
     public function index()
     {
         return new ViewResponse('admin.role.index');

@@ -27,5 +27,11 @@ Route::group(['middleware' => ['auth:api']], function () {
     // Role
     Route::group(['prefix' => 'role'], function () {
         Route::get('/', [RoleController::class, 'index'])->name('api.role.index');
+        Route::post('/create', [RoleController::class, 'store'])->name('api.role.store');
+
+        Route::group(['prefix' => '{role}'], function () {
+            Route::post('/edit', [RoleController::class, 'update'])->name('api.role.update');
+            Route::delete('/delete', [RoleController::class, 'destory'])->name('api.role.destory');
+        });
     });
 });
