@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\PassportAuthController;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\UserController;
+use App\Http\Controllers\API\CompanyController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -39,6 +40,16 @@ Route::group(['middleware' => ['auth:api']], function () {
             Route::get('/show', [UserController::class, 'show'])->name('api.user.show');
             Route::post('/edit', [UserController::class, 'update'])->name('api.user.update');
             Route::delete('/delete', [UserController::class, 'destory'])->name('api.user.destory');
+        });
+    });
+
+    Route::group(['prefix' => 'company'], function () {
+        Route::get('/', [CompanyController::class, 'index'])->name('api.company.index');
+        Route::post('/create', [CompanyController::class, 'store'])->name('api.company.store');
+        Route::group(['prefix' => '{company}'], function () {
+            Route::get('/show', [CompanyController::class, 'show'])->name('api.company.show');
+            Route::post('/edit', [CompanyController::class, 'update'])->name('api.company.update');
+            Route::delete('/delete', [CompanyController::class, 'destory'])->name('api.company.destory');
         });
     });
 });

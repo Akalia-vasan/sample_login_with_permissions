@@ -5,6 +5,8 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\UserTableController;
 use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Role\RoleTableController;
+use App\Http\Controllers\Company\CompanyController;
+use App\Http\Controllers\Company\CompanyTableController;
 use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------

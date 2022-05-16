@@ -5,7 +5,7 @@
         list: {
         
             selectors: {
-                pages_table: $('#pages-table'),
+                pages_table: $('#company-table'),
             },
         
             init: function () {
@@ -21,10 +21,11 @@
                     },
                     columns: [
 
-                        { data: 'title', name: 'title' },
-                        { data: 'status', name: 'status' },
-                        { data: 'created_by', name: 'created_by' },
+                        { data: 'name', name: 'name' },
+                        { data: 'email', name: 'email' },
+                        { data: 'telephone', name: 'telephone' },
                         { data: 'created_at', name: 'created_at' },
+                        { data: 'updated_at', name: 'updated_at' },
                         { data: 'actions', name: 'actions', searchable: false, sortable: false }
 
                     ],

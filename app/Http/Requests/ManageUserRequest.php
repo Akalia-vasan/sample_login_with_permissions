@@ -25,7 +25,7 @@ class ManageUserRequest extends FormRequest
     {
         return [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email',
+            'email' => 'required|regex:/(.*)@(.*)\.(.*)/i|email|unique:users,email',
             'password' => 'required|same:password_confirmation',
         ];
     }
