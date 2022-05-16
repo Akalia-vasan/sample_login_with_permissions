@@ -25,8 +25,8 @@ class CompanyRepository extends BaseRepository
                 'companies.name',
                 'companies.email',
                 'companies.telephone',
-                'roles.created_at',
-                'roles.updated_at',
+                'companies.created_at',
+                'companies.updated_at',
             ]);
     }
 

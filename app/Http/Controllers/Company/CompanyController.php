@@ -49,14 +49,13 @@ class CompanyController extends Controller
         $backupLogo='public/images/company/logo';
         if(!is_dir($backupLogo)) {
            Storage::makeDirectory($backupLogo, 0755, true, true);
-        }
-                
+        }       
         $logofile = $request->file('logo');
-        if (array_key_exists('logo', $request)) 
+        if ($request->has('logo')) 
         {
             $logo_image = time().'_'.$logofile->getClientOriginalName();
             $upload_success1 = $logofile->storeAs($backupLogo,$logo_image);    
-            $uploaded_logo = 'logo/'.$logo_image; 
+            $uploaded_logo = 'images/company/logo/'.$logo_image; 
         }
 
         $backup='public/images/company/cover';
@@ -65,11 +64,11 @@ class CompanyController extends Controller
         }
                 
         $coverfile = $request->file('cover_image');
-        if (array_key_exists('cover_image', $request)) 
+        if ($request->has('cover_image')) 
         {
             $cover_image = time().'_'.$coverfile->getClientOriginalName();
             $upload = $coverfile->storeAs($backup,$cover_image);    
-            $uploaded_cover_image = 'logo/'.$cover_image; 
+            $uploaded_cover_image = 'images/company/cover/'.$cover_image; 
         }
 
         $company = new Company();
@@ -82,9 +81,6 @@ class CompanyController extends Controller
         $company->website = $request->website;
         $company->created_by = auth()->user()->id;  
         $company->save();
-
-        
-    
         return redirect()->route('admin.auth.company.index')
                         ->with('success','Company created successfully');
     }
@@ -98,35 +94,34 @@ class CompanyController extends Controller
     {
         $uploaded_cover_image = '';
         $uploaded_logo = '';
-        $backupLogo='images/company/logo';
+        $backupLogo='public/images/company/logo';
         if(!is_dir($backupLogo)) {
            Storage::makeDirectory($backupLogo, 0755, true, true);
         }
-                
-        $logofile = $request->file('logo');
-        if (array_key_exists('logo', $request)) 
+        if(isset($company->logo))
         {
-            if(isset($company->logo))
-            {
-                Storage::disk('public')->delete($company->logo);
-            }
+            // Storage::disk('public')->delete($company->logo);
+        }       
+        $logofile = $request->file('logo');
+        if ($request->has('logo')) 
+        {
             
             $logo_image = time().'_'.$logofile->getClientOriginalName();
-            $upload_success1 = $logofile->storeAs($backupLogo,$logo_image);    
+            $upload_success1 = $logofile->storeAs($backupLogo,$logo_image);
             $uploaded_logo = 'images/company/logo/'.$logo_image; 
         }
 
-        $backup='images/company/cover';
+        $backup='public/images/company/cover';
         if(!is_dir($backup)) {
            Storage::makeDirectory($backup, 0755, true, true);
         }
                 
         $coverfile = $request->file('cover_image');
-        if (array_key_exists('cover_image', $request)) 
+        if ($request->has('cover_image')) 
         {
             if(isset($company->cover_image))
             {
-                Storage::disk('public')->delete($company->cover_image);
+                // Storage::disk('public')->delete($company->cover_image);
             }
             $cover_image = time().'_'.$coverfile->getClientOriginalName();
             $upload = $coverfile->storeAs($backup,$cover_image);    
@@ -167,7 +162,7 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         return view('admin.company.show')
-        ->withUser($company);
+        ->withCompany($company);
     }
 
 }

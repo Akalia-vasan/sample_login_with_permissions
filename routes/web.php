@@ -82,7 +82,7 @@ Route::group([
         Route::group(['prefix' => '{company}'], function () {
             Route::get('/edit', [CompanyController::class, 'edit'])->name('company.edit');
             Route::patch('/edit', [CompanyController::class, 'update'])->name('company.update');
-            Route::delete('/delete', [CompanyController::class, 'destory'])->name('company.destroy');
+            Route::delete('/delete', [CompanyController::class, 'destroy'])->name('company.destroy');
             Route::get('/show', [CompanyController::class, 'show'])->name('company.show');
 
         });

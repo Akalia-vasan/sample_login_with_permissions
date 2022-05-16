@@ -6,7 +6,7 @@
 <li class="breadcrumb-menu">
     <div class="btn-group" role="group" aria-label="Button group">
         <div class="dropdown">
-            <a class="btn dropdown-toggle" href="{{ route('admin.auth.user.index') }}" role="button" id="breadcrumb-dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">UsersCompany</a>
+            <a class="btn dropdown-toggle" href="{{ route('admin.auth.user.index') }}" role="button" id="breadcrumb-dropdown-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Company</a>
 
             <div class="dropdown-menu" aria-labelledby="breadcrumb-dropdown-1">
             <a class="dropdown-item" href="{{ route('admin.auth.user.create') }}">Create Company</a>
@@ -81,7 +81,16 @@
 
                     
                     <div class="col-lg-5">
-                    <input type="file" name="logo" placeholder="Choose file" id="logo">
+                    <input type="file" name="logo" placeholder="Choose file" id="logo" accept="image/png, image/gif, image/jpeg" onchange="validateimg(this)">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    {{ Form::label('cover_image', trans('Cover Image'), ['class' => 'col-md-2 from-control-label']) }}
+
+                    
+                    <div class="col-lg-5">
+                    <input type="file" name="cover_image" placeholder="Choose file" id="cover_image" accept="image/png, image/gif, image/jpeg">
                     </div>
                 </div>
                
@@ -120,7 +129,38 @@
 @section('pagescript')
 <script>
     FTX.Utils.documentReady(function() {
-        FTX.Users.edit.init("create");
+        FTX.Companies.edit.init(("create"));
     });
+    function validateimg(ctrl) { 
+        var fileUpload = ctrl;
+        var regex = new RegExp("([a-zA-Z0-9\s_\\.\-:])+(.jpg|.png|.gif)$");
+        if (regex.test(fileUpload.value.toLowerCase())) {
+            if (typeof (fileUpload.files) != "undefined") {
+                var reader = new FileReader();
+                reader.readAsDataURL(fileUpload.files[0]);
+                reader.onload = function (e) {
+                    var image = new Image();
+                    image.src = e.target.result;
+                    image.onload = function () {
+                        var height = this.height;
+                        var width = this.width;
+                        if (height < 100 || width < 100) {
+                            alert("At least you can upload a 1100*750 photo size.");
+                            return false;
+                        }else{
+                            alert("Uploaded image has valid Height and Width.");
+                            return true;
+                        }
+                    };
+                }
+            } else {
+                alert("This browser does not support HTML5.");
+                return false;
+            }
+        } else {
+            alert("Please select a valid Image file.");
+            return false;
+        }
+    }
 </script>
 @endsection

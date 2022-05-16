@@ -23,12 +23,11 @@ class ManageCompanyRequest extends FormRequest
      */
     public function rules()
     {
-        dd($this->request);
         return [
             'name' => 'required|min:3|max:100',
             'email' => 'regex:/(.*)@(.*)\.(.*)/i|max:200|email|unique:companies,email',
-            'logo' => 'mimes:jpg,png,jpeg,gif|dimensions:min_width=100,min_height=100',
-            'cover_image' => 'mimes:jpg,png,jpeg,gif',
+            // 'logo' => 'mimes:jpg,png,jpeg,gif|dimensions:min_width=100,min_height=100',
+            // 'cover_image' => 'mimes:jpg,png,jpeg,gif',
             'telephone' => 'regex:/^([0-9\s\-\+\(\)]*)$/|min:10|max:15',
             'address' => 'nullable|string|max:200|min:3',
             'website' => 'nullable|url|string|max:200|min:3'
