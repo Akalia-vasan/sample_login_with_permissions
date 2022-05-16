@@ -61,3 +61,23 @@ Breadcrumbs::for('admin.auth.company.show', function ($trail, $id) {
     $trail->parent('admin.auth.company.index');
     $trail->push('Company View', route('admin.auth.company.show', $id));
 });
+
+// Employee breadcrumbs
+Breadcrumbs::for('admin.auth.employee.index', function ($trail) {
+    $trail->push(__('Employee Management'), route('admin.auth.employee.index'));
+});
+
+Breadcrumbs::for('admin.auth.employee.create', function ($trail) {
+    $trail->parent('admin.auth.employee.index');
+    $trail->push('Employee Create', route('admin.auth.employee.create'));
+});
+
+Breadcrumbs::for('admin.auth.employee.edit', function ($trail, $id) {
+    $trail->parent('admin.auth.employee.index');
+    $trail->push('Employee Edit', route('admin.auth.employee.edit', $id));
+});
+
+Breadcrumbs::for('admin.auth.employee.show', function ($trail, $id) {
+    $trail->parent('admin.auth.employee.index');
+    $trail->push('Employee View', route('admin.auth.employee.show', $id));
+});

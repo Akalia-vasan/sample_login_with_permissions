@@ -134,7 +134,7 @@
     </div>
     <!--card-body-->
 
-    {{ Form::submit('Create', ['class' => 'btn btn-success btn-sm pull-right']) }}
+    {{ Form::submit('Update', ['class' => 'btn btn-success btn-sm pull-right']) }}
 </div>
 <!--card-->
 {{ Form::close() }}

@@ -7,6 +7,8 @@ use App\Http\Controllers\Role\RoleController;
 use App\Http\Controllers\Role\RoleTableController;
 use App\Http\Controllers\Company\CompanyController;
 use App\Http\Controllers\Company\CompanyTableController;
+use App\Http\Controllers\Employee\EmployeeController;
+use App\Http\Controllers\Employee\EmployeeTableController;
 use App\Http\Controllers\AccountController;
 /*
 |--------------------------------------------------------------------------
@@ -92,5 +94,23 @@ Route::group([
         Route::get('/', [AccountController::class, 'index'])->name('account.index');
         Route::patch('/edit', [AccountController::class, 'update'])->name('account.update');
         Route::patch('/password', [AccountController::class, 'password'])->name('account.password.update');
+    });
+
+    Route::group(['namespace' => 'Employee', 'prefix' => 'employee'], function () {
+        // For DataTables
+        Route::post('/get', [EmployeeTableController::class, 'invoke'])->name('employee.get');
+
+
+        // Employee CRUD
+        Route::get('/', [EmployeeController::class, 'index'])->name('employee.index');
+        Route::get('/create', [EmployeeController::class, 'create'])->name('employee.create');
+        Route::post('/', [EmployeeController::class, 'store'])->name('employee.store');
+        Route::group(['prefix' => '{employee}'], function () {
+            Route::get('/edit', [EmployeeController::class, 'edit'])->name('employee.edit');
+            Route::patch('/edit', [EmployeeController::class, 'update'])->name('employee.update');
+            Route::delete('/delete', [EmployeeController::class, 'destroy'])->name('employee.destroy');
+            Route::get('/show', [EmployeeController::class, 'show'])->name('employee.show');
+
+        });
     });
 });

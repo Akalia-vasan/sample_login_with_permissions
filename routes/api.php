@@ -6,6 +6,7 @@ use App\Http\Controllers\API\PassportAuthController;
 use App\Http\Controllers\API\RoleController;
 use App\Http\Controllers\API\UserController;
 use App\Http\Controllers\API\CompanyController;
+use App\Http\Controllers\API\EmployeeController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -49,7 +50,17 @@ Route::group(['middleware' => ['auth:api']], function () {
         Route::group(['prefix' => '{company}'], function () {
             Route::get('/show', [CompanyController::class, 'show'])->name('api.company.show');
             Route::post('/edit', [CompanyController::class, 'update'])->name('api.company.update');
-            Route::delete('/delete', [CompanyController::class, 'destory'])->name('api.company.destory');
+            Route::delete('/delete', [CompanyController::class, 'destroy'])->name('api.company.destory');
         });
     });
+    Route::group(['prefix' => 'employee'], function () {
+        Route::get('/', [EmployeeController::class, 'index'])->name('api.employee.index');
+        Route::post('/create', [EmployeeController::class, 'store'])->name('api.employee.store');
+        Route::group(['prefix' => '{employee}'], function () {
+            Route::get('/show', [EmployeeController::class, 'show'])->name('api.employee.show');
+            Route::post('/edit', [EmployeeController::class, 'update'])->name('api.employee.update');
+            Route::delete('/delete', [EmployeeController::class, 'destroy'])->name('api.employee.destory');
+        });
+    });
+
 });

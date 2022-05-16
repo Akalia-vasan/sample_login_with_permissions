@@ -23,6 +23,7 @@ class CreateEmployeesTable extends Migration
             $table->text('telephone', 65535)->nullable();
             $table->enum('gender', array('Male','Female'))->nullable()->default('Male');
             $table->timestamps();
+            $table->softDeletes();
         });
     }
 
