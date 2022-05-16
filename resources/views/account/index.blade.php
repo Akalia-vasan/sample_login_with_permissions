@@ -40,9 +40,9 @@
                             <div role="tabpanel" class="tab-pane fade show pt-3" id="edit" aria-labelledby="edit-tab">
                                 @include('account.tabs.edit')
                             </div><!--tab panel profile-->
-                                @include('account.tabs.change-password')
-                            <div role="tabpanel" class="tab-pane fade show pt-3" id="password" aria-labelledby="password-tab">
                                 
+                            <div role="tabpanel" class="tab-pane fade show pt-3" id="password" aria-labelledby="password-tab">
+                                @include('account.tabs.change-password')
                             </div>
                         </div><!--tab content-->
                     </div><!--tab panel-->
