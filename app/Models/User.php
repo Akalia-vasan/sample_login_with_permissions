@@ -54,4 +54,16 @@ class User extends Authenticatable
             return false;
         }
     }
+
+    public function isRole()
+    {
+        if($this->getRoleNames()->first() == 'Media manager')
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
 }

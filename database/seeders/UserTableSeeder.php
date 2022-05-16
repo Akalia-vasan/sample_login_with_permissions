@@ -24,7 +24,7 @@ class UserTableSeeder extends Seeder
     
         $role = Role::find(1);
      
-        $permissions = Permission::pluck('id','id')->all();
+        $permissions = Permission::where('guard_name', 'web')->pluck('id','id')->all();
    
         $role->syncPermissions($permissions);
      

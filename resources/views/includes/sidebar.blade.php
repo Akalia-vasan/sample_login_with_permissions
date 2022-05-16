@@ -41,16 +41,32 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            <!-- <li class="nav-item">
                                 <a class="nav-link " href="">
                                     Permissions Management
                                 </a>
-                            </li>
+                            </li> -->
                         </ul>
                     </li>
                 @endif    
             @endauth
-                <li class="divider"></li>
+            <li class="divider"></li>
+            @if (auth()->user()->isRole())
+            <li class="nav-item">
+                <a class="nav-link {{
+        active_class(Route::is('auth/company'))
+    }}" href="{{ route('admin.auth.company.index') }}">
+                    Company Management
+                </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link {{
+        active_class(Route::is('auth/employee'))
+    }}" href="{{ route('admin.auth.employee.index') }}">
+                    Employee Management
+                </a>
+            </li>
+            @endif
         </ul>    
     </nav>
 
