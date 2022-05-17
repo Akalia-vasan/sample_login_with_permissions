@@ -402,8 +402,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`, `deleted_at`) VALUES
-(1, 'Weare Designers', 'admin@wearedesigners.net', NULL, '$2y$10$QPGBDdvoREHAWVE4Q.4r6OUXrY7hEyDyRgqVZlNtyRI.3WKVeFrJe', NULL, '2022-05-16 11:38:45', '2022-05-16 11:38:45', NULL),
-(2, 'Akalia', 'user@wearedesigners.net', NULL, '$2y$10$jCA9m5l8EREZ8j3flDFGX.99hyEha9zUKo9au7aBSlwRbIkuRviqC', NULL, '2022-05-16 11:40:14', '2022-05-16 11:40:14', NULL);
+(1, 'Weare Designers', 'admin@wearedesigners.net', '2022-05-16 11:40:14', '$2y$10$QPGBDdvoREHAWVE4Q.4r6OUXrY7hEyDyRgqVZlNtyRI.3WKVeFrJe', NULL, '2022-05-16 11:38:45', '2022-05-16 11:38:45', NULL),
+(2, 'Akalia', 'user@wearedesigners.net', '2022-05-16 11:40:14', '$2y$10$jCA9m5l8EREZ8j3flDFGX.99hyEha9zUKo9au7aBSlwRbIkuRviqC', NULL, '2022-05-16 11:40:14', '2022-05-16 11:40:14', NULL);
 
 --
 -- Indexes for dumped tables
