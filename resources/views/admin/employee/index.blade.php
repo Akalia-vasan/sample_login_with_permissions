@@ -38,7 +38,7 @@
         <div class="row mt-4">
             <div class="col">
                 <div class="table-responsive" style="overflow-y:visible;overflow-x:visible;">
-                    <table class="table" id="pages-table" data-ajax_url="{{ route('admin.auth.employee.get') }}">
+                    <table class="table" id="employees-table" data-ajax_url="{{ route('admin.auth.employee.get') }}">
                         <thead>
                             <tr>
                                 <th>First Name</th>
@@ -66,7 +66,7 @@
 @section('pagescript')
 <script>
     FTX.Utils.documentReady(function() {
-        FTX.Pages.list.init();
+        FTX.Employees.list.init();
     });
 </script>
 @endsection

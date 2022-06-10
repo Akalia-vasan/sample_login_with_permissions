@@ -1,21 +1,21 @@
 (function () {
 
-FTX.Pages = {
+FTX.Employees = {
 
     list: {
     
         selectors: {
-            pages_table: $('#pages-table'),
+            employees_table: $('#employees-table'),
         },
     
         init: function () {
 
-            this.selectors.pages_table.dataTable({
+            this.selectors.employees_table.dataTable({
 
                 processing: false,
                 serverSide: true,
                 ajax: {
-                    url: this.selectors.pages_table.data('ajax_url'),
+                    url: this.selectors.employees_table.data('ajax_url'),
                     type: 'post',
                     data: { status: 1, trashed: false }
                 },
